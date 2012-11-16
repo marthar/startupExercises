@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>HTML Rocks!</title>
+	<title>jQuery FTW!</title>
 	<meta name="viewport" content="width=1024">
 	
 		<!-- Replace path with correct path to deck.core.css. -->
@@ -87,98 +87,10 @@
 
 <!-- Create any number of elements with class slide within the container -->
 <article class='slide slide-subhead'>
-<h1>HTML</h1>
-<h2>Week 3</h2>
-<p>CDGD304 - Fall 2012<br/>
- <a href='http://marthar.github.com/webfall-2012/3.html'>http://marthar.github.com/webfall-2012/3.html</a></p>
+<h1>Boston StartUp School</h1>
+<h2>jQuery A.K.A. Oh Crap Programming!</h2>
+<p>November 16, 2012<br/>
 </article>
-	
-<article class='slide slide-list'>
-<h1>Order of Business</h1>
-	<ol>
-		<li class="slide">
-			<h3>Review Homework</h3>
-		</li>
-		<li class="slide">
-			<h3>Discuss Readings</h3>
-		</li>
-		<li class="slide">
-			<h3>Lists</h3>
-		</li>
-		<li class="slide">
-			<h3>Anchors</h3>
-		</li>
-		<li class="slide">
-			<h3>Links</h3>
-		</li>
-		<li class="slide">
-			<h3>Images</h3>
-		</li>
-		<li class="slide">
-			<h3>Characters</h3>
-		</li>
-	</ol>
-</article>
-
-
-<article class='slide slide-accent'>
-<h1>Homework</h1>
-</article>
-
-<article class="slide slide-list">
-	<h2>Homework Review</h2>
-	<script>
-(function($){
- 
-    $.fn.shuffle = function() {
- 
-        var allElems = this.get(),
-            getRandom = function(max) {
-                return Math.floor(Math.random() * max);
-            },
-            shuffled = $.map(allElems, function(){
-                var random = getRandom(allElems.length),
-                    randEl = $(allElems[random]).clone(true)[0];
-                allElems.splice(random, 1);
-                return randEl;
-           });
- 
-        this.each(function(i){
-            $(this).replaceWith($(shuffled[i]));
-        });
- 
-        return $(shuffled);
- 
-    };
- 
-})(jQuery);
-
-function shuffleHomework(amt) {
-	if(amt <= 0) return;
-	$("#homework li").shuffle();
-	setTimeout(function() { shuffleHomework(amt - 1); },200);
-}
-
-	</script>
-	<a href='javascript:shuffleHomework(10);'>Shuffle</a>
-	<ul id='homework'>
-		<li><a href='http://heathermendonca.github.com/homework/index.html'>heathermendonca</a></li>
-		<li><a href='http://jmfisherr.github.com/homework/index.html'>jmfisherr</a></li>
-		<li><a href='http://yeesusanna.github.com/homework/index.html'>yeesusanna</a></li>
-		<li><a href='http://krhogan.github.com/homework/index.html'>krhogan</a></li>
-		<li><a href='http://nopsketchbook.github.com/homework/index.html'>nopsketchbook</a></li>
-		<li><a href='http://lkfenton.github.com/homework/index.html'>lkfenton</a></li>
-		<li><a href='http://bejohnston.github.com/homework/index.html'>bejohnston</a></li>
-		<li><a href='http://annacolleenc.github.com/homework/index.html'>annacolleenc</a></li>
-		<li><a href='http://hisakanishibayashi.github.com/homework/index.html'>hisakanishibayashi</a></li>
-		<li><a href='http://marthabarry.github.com/homework/index.html'>marthabarry</a></li>
-		<li><a href='http://trwhite.github.com/homework/index.html'>trwhite</a></li>
-		<li><a href='http://themusicmaker.github.com/homework/index.html'>themusicmaker</a></li>
-		<li><a href='http://ktengprawat.github.com/homework/index.html'>ktengprawat</a></li>
-		<li><a href='http://digihex.github.com/homework/index.html'>digihex</a></li>
-	</ul>
-</article>
-
 
 <article class='slide slide-subhead'>
    <h1>HTML/CSS Are Static</h1>
