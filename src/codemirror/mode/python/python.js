@@ -150,6 +150,7 @@ CodeMirror.defineMode("python", function(conf, parserConf) {
         while ('rub'.indexOf(delimiter.charAt(0).toLowerCase()) >= 0) {
             delimiter = delimiter.substr(1);
         }
+        var delim_re = new RegExp(delimiter);
         var singleline = delimiter.length == 1;
         var OUTCLASS = 'string';
         
@@ -161,7 +162,7 @@ CodeMirror.defineMode("python", function(conf, parserConf) {
                     if (singleline && stream.eol()) {
                         return OUTCLASS;
                     }
-                } else if (stream.match(delimiter)) {
+                } else if (stream.match(delim_re)) {
                     state.tokenize = tokenBase;
                     return OUTCLASS;
                 } else {
