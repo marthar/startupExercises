@@ -242,7 +242,7 @@
     font-style: normal; }
   .deck-container h1 {
     font-family: "proxima-nova-condensed",Helvetica, sans-serif;
-    font-weight: 400;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: -0.04em;
     line-height: 1em;
@@ -255,7 +255,7 @@
     font-size: 2.75em;
     line-height: 1.2em;
     font-family: "proxima-nova-condensed",Helvetica, sans-serif;
-    font-weight: 400;
+    font-weight: 800;
     text-transform: uppercase;
     color: #2ca58f;
     border: none;
@@ -269,7 +269,7 @@
     font-size: 2em;
     line-height: 1.2em;
     font-family: "proxima-nova-condensed",Helvetica, sans-serif;
-    font-weight: 400;
+    font-weight: 800;
     text-transform: uppercase;
     color: #2ca58f;
     border: none;
