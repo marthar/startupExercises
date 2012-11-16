@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSS Rocks!</title>
+	<meta name="viewport" content="width=1024">
+	
+	<!-- Replace path with correct path to deck.core.css. -->
+	<link rel="stylesheet" href="src/deck.js/core/deck.core.css" type="text/css">
+	
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="src/deck.js/extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="src/deck.js/extensions/status/deck.status.css">
+	<link rel="stylesheet" href="src/deck.js/extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="src/deck.js/extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="src/css/prettify.css">
+	<link rel="stylesheet" href="src/css/deck.coder.css">
+	
+
+	<!-- Theme -->
+	<link rel="stylesheet" id='style-theme-link' href="src/css/coderdeck.css" type="text/css" >
+
+	<link rel="stylesheet" href="src/codemirror/lib/codemirror.css">
+	<link rel="stylesheet" href="src/codemirror/theme/default.css">
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+	
+	<!-- Replace path with correct path to Modernizr file. -->
+
+	<script src='src/jquery.min.js'></script>
+	<script src="src/modernizr.js"></script>
+</head>
+<body class="deck-container">
+	<script type='text/coderdeck' id='coderdeck-default'>
+	  <html>
+	    <head>
+	      <script src='src/jquery.min.js'>SCRIPTEND
+	    </head>
+	    <body>
+		    CODE
+	    </body>
+	</html>
+	</script>
+
+	<script type='text/coderdeck' id='coderdeck-plain'>
+		<html>
+			<title>test</title>
+			<link rel="stylesheet" href="reset.css">
+			<body>
+				CODE
+			</body>
+		</html>
+	</script>
+
+	<script type='text/coderdeck' id='coderdeck-css-playground'>
+		<html>
+			<title>test</title>
+				CODE
+			<body>
+				<h1>I'm a H1 heading</h1>
+				<h2>I'm a H2 heading</h2>
+				<p>Pargraph of text &lt;p&gt;</p>
+				<div class='stuff'>&lt;div&gt; with class "stuff"</div>
+				<div id='my-div'>&lt;div&gt; with id "my-div"</div>
+			</body>
+		</html>
+	</script>
+
+
+	<script type='text/coderdeck' id='coderdeck-style-example'>
+		<html>
+			<title>test</title>
+			<style>
+				CODE
+			</style>
+			<body>
+				<h1>I'm a H1 heading</h1>
+				<h2>I'm a H2 heading</h2>
+				<h3>Pargraph of text &lt;p&gt; here</p>
+				<div class='stuff'>I'm a div &lt;div&gt; with class "stuff"</div>
+				<div id='my-div'>I'm a &lt;div&gt; with id "my-div"</div>
+			</body>
+		</html>
+	</script> 	
+
+
+<!-- Create any number of elements with class slide within the container -->
+<article class='slide slide-subhead'>
+<h1>CSS Layout</h1>
+<h2>Week 5</h2>
+<p>CDGD304 - Fall 2012<br/>
+ <a href='http://marthar.github.com/webfall-2012/5.html'>http://marthar.github.com/webfall-2012/5.html</a></p>
+</article>
+	
+<article class='slide slide-list'>
+<h1>Order of Business</h1>
+	<ol>
+		<li class="slide">
+			<h3>Review Homework</h3>
+		</li>
+		<li class="slide">
+			<h3>Discuss Readings</h3>
+		</li>
+		<li class="slide">
+			<h3>CSS Layout</h3>
+		</li>
+		<li class="slide">
+			<h3>Box Model</h3>
+		</li>
+		<li class="slide">
+			<h3>Floats</h3>
+		</li>
+		<li class="slide">
+			<h3>Position</h3>
+		</li>
+		<li class="slide">
+			<h3>Excercises</h3>
+		</li>
+		<li class="slide">
+			<h3>Homework</h3>
+		</li>
+	</ol>
+</article>
+
+
+<article class='slide slide-accent'>
+<h1>Homework</h1>
+</article>
+
+<article class="slide slide-list">
+	<h2>Homework Review</h2>
+	<script>
+(function($){
+ 
+    $.fn.shuffle = function() {
+ 
+        var allElems = this.get(),
+            getRandom = function(max) {
+                return Math.floor(Math.random() * max);
+            },
+            shuffled = $.map(allElems, function(){
+                var random = getRandom(allElems.length),
+                    randEl = $(allElems[random]).clone(true)[0];
+                allElems.splice(random, 1);
+                return randEl;
+           });
+ 
+        this.each(function(i){
+            $(this).replaceWith($(shuffled[i]));
+        });
+ 
+        return $(shuffled);
+ 
+    };
+ 
+})(jQuery);
+
+function shuffleHomework(amt) {
+	if(amt <= 0) return;
+	$("#homework li").shuffle();
+	setTimeout(function() { shuffleHomework(amt - 1); },200);
+}
+
+	</script>
+	<a href='javascript:shuffleHomework(10);'>Shuffle</a>
+	<ul id='homework'>
+		<li><a href='http://heathermendonca.github.com/homework/index.html'>heathermendonca</a></li>
+		<li><a href='http://jmfisherr.github.com/homework/index.html'>jmfisherr</a></li>
+		<li><a href='http://yeesusanna.github.com/homework/index.html'>yeesusanna</a></li>
+		<li><a href='http://krhogan.github.com/homework/index.html'>krhogan</a></li>
+		<li><a href='http://nopsketchbook.github.com/homework/index.html'>nopsketchbook</a></li>
+		<li><a href='http://lkfenton.github.com/homework/index.html'>lkfenton</a></li>
+		<li><a href='http://bejohnston.github.com/homework/index.html'>bejohnston</a></li>
+		<li><a href='http://annacolleenc.github.com/homework/homework.html'>annacolleenc</a></li>
+		<li><a href='http://hisakanishibayashi.github.com/homework/index.html'>hisakanishibayashi</a></li>
+		<li><a href='http://marthabarry.github.com/homework/index.html'>marthabarry</a></li>
+		<li><a href='http://trwhite.github.com/homework/index.html'>trwhite</a></li>
+		<li><a href='http://themusicmaker.github.com/homework/index.html'>themusicmaker</a></li>
+		<li><a href='http://ktengprawat.github.com/homework/index.html'>ktengprawat</a></li>
+		<li><a href='http://digihex.github.com/homework/index.html'>digihex</a></li>
+	</ul>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Readings</h2>
+	<ul>
+		<li>
+			<h3><a href='http://www.alistapart.com/articles/designingforflow/'>Designing for Flow</a>
+	</h3>
+</li>
+<li>
+              <h3><a href='http://www.alistapart.com/articles/the-case-for-content-strategy-motown-style/'>The Case for Content Strategy</a>
+	</h3>
+		</li>
+	</ul>		
+</article>
+
+
+<article class='slide slide-accent'>
+	<h1>Let's Talk CSS</h1>
+</article>
+
+<article class="slide slide-list">
+<h1>Cascading Style Sheets</h1>
+<ul>
+<li class="slide">
+	<h3>Used for “presentation” of your HTML</h3>
+</li>
+<li class="slide">
+	<h3>Controls the styles of your page</h3>
+</li>
+<li class="slide">
+	<h3>Also Controls the layout of your page (where stuff is positioned)</h3>
+</li>
+<li class="slide">
+	<h3>Can have different styles different media formats (eg. print, screen, mobile)</h3>
+</li>
+</ul>
+</article>
+
+<article class="slide slide-image">
+<h1>What is a style?</h1>
+<img src='images/css.png'/>
+</article>
+
+<article class='slide slide-list'>
+	<h1>We Pick a Selector</h1>
+	<p class="slide">(the part of our HTML we want to style, for example, h1, h2, p or li)<br/></p>
+		<div class="slide example"><em> h1</em> <span class='slide'> &#123; color:red; &#125;</span></div>
+		<div class="slide example"><em> h2</em> <span class='slide'> &#123; font-size:20px; &#125;</span></div>
+		<div class="slide example"><em> a</em> <span class='slide'> &#123; text-decoration:none; &#125;</span></div>
+	<p class="slide">You can also pick id or class names, as well as multiple tags- but for now let's keep it simple</em>
+	</p>
+</article>
+
+
+<article class='slide slide-list'>
+	<h1>We Make a Declaration</h1>
+	<p class="slide">(using CSS properties and values we add formatting)<br/></p>
+		<div class="slide example">h1<span class='slide'> &#123; <em> color:red; </em>&#125;</span></div>
+		<div class="slide example"> h2<span class='slide'> &#123; <em> font-size:20px;</em> &#125;</span></div>
+		<div class="slide example"> a <span class='slide'> &#123; <em> text-decoration:none; </em> &#125;</span></div>
+	<p class="slide">Remember google is your friend here's a quick <a href="http://www.lesliefranke.com/files/reference/csscheatsheet.html">cheat sheet</a>
+	</p>
+</article>
+
+<article class='slide slide-list'>
+<h2>Pay attention to your class and id names!</h2>
+<ul>
+	<li class="slide">
+		<h3>You can't use spaces.</h3>
+	</li>
+	<li class="slide">
+		<h3>You shouldn't use underscores (_) - altough technically now permitted</h3>
+	</li>
+	<li class="slide">
+		<h3>Use camelCase or dashes-to-separate-names</h3>
+	</li>
+	<li class="slide">
+		<h3>I'd recommend dashes - css uses Dashses (<em>background-color, font-family</em>), <br/>
+			Javascript uses camelCase</h3>
+	</li>
+	<li class="slide">
+		<h3>Be consistent! - easier to read and remember what you wrote.</h3>
+	</li>
+</ul>
+</article>
+
+
+<article class="slide slide-list">
+<h2>Available selectors</h2>
+<ul>
+	 <li class='slide'>
+		 <h3>name of element (e.g. <em>p, div, h1</em>)</h3>
+	</li>
+	<li class='slide'>
+		<h3>
+		class name preﬁxed with a period (.)<br/>
+		<em>HTML </em>&lt;div <span class="callout">class=‘my-class-name</span>’&gt;<span class="light"> This is my class name </span>&lt;/div&gt;<br/>
+		<em>CSS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em><span class="callout">.my-class-name</span> {<span class="light"> font-size: 25px; </span>}
+	</h3>
+	</li>
+	<li class='slide'>
+		<h3>element id preﬁxed with a pound sign (#)<br/>
+			<em>HTML </em>&lt;div <span class="callout">id=‘my-id</span>’&gt;<span class="light"> This is my id</span>&lt;/div&gt;<br/>
+			<em>CSS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em><span class="callout">#my-id</span> { <span class="light"> color: red;</span> }
+	</h3>
+</li>
+</ul>
+</article>
+
+
+<article class="slide slide-list">
+<h1>Properties</h1>
+<ul>
+<li class="slide">
+	<h3>There are lots of them</h3>
+</li>
+<li class="slide">
+	<h3>Two Primary types: Layout, Style<br/>
+	(Padding is layout, color is style)</h3>
+</li>
+<li class="slide">
+	<h3>Style generally inherit, Layout don’t</h3>
+</li>
+<li class="slide">
+	<h3>Sometimes can be combined into one: e.g.<br/>
+	<em>font = font-family, font-style, font-variant, ...</em><br/>
+	<em>background = background-color, background-image, background-repeat, background-attachment, background-position ...</em><br/>
+	<em>padding = padding-top, padding-right, padding-bottom, padding-left ...</em></h3>
+</li>
+<li class="slide">
+	<h3>Layout box properties go clockwise from  midnight: top, right, bottom, left</h3>
+</li>
+</ul>
+</article>
+
+
+<article class="slide slide-list">
+<h1>Values</h1>
+<ul>
+<li class="slide">
+	<h3>colors: #FFF, #FFFFFF, rgb(255,255,255), gray, black, red</h3>
+</li>
+<li class="slide">
+	<h3>numbers: 0, 25px, 1.1em, 100%<br/>
+		<em>em's are 'M' height - and these inherit (multiply)</em>
+	</h3>
+</li>
+<li class="slide">
+	<h3>“inherit” is a special property to force inheritence</h3>
+</li>
+</ul>
+</article> 
+
+
+
+<article class='slide slide-list'>
+<h2>Let's Give this a Try! </h2>
+<textarea class='coder-editor coder-editor-split coder-editor-instant' data-coder-template="coderdeck-css-playground" data-language='html'>
+<style>
+
+</style>
+</textarea>
+</article>
+
+<article class='slide slide-accent'>
+	<h1>Let's Talk Layout</h1>
+</article>
+
+<article class="slide slide-list">
+<h1>Layout Properties</h1>
+<ul>
+<li class="slide">
+	<h3>Box model: margin, padding, width, height</h3>
+</li>
+<li class="slide">
+	<h3>top, bottom, left, right</h3>
+</li>
+<li class="slide">
+	<h3>border</h3>
+</li>
+<li class="slide">
+	<h3>position [ static, relative, absolute ]</h3>
+</li>
+<li class="slide">
+	<h3>ﬂoat [ left, right, none ], clear [ left, right, both]</h3>
+</li>
+<li class="slide">
+	<h3>display [none, block, inline inline-block]</h3>
+</li>
+<li class="slide">
+	<h3>visibility [visible, hidden]</h3>
+</li>
+<li class="slide">
+	<h3>background (color, image, repeat, position)</h3>
+</li>
+</ul>
+</article>
+
+<article class='slide slide-accent'>
+	<h1>Box Model</h1>
+</article>
+
+
+<article class='slide slide-image'>
+<h1>Layout = Box Model</h2>
+<img src='images/layout.jpg'/>
+</article>
+
+<article class="slide slide-list">
+<h1>Layout Properties</h1>
+<ul>
+<li class="slide">
+	<h3>Content:text the tags are wrapping</h3>
+		<ul>
+			<li>color:red;</li>
+			<li>font-size:20px;</li>
+			<li>text-transform:uppercase;</li>
+		</ul>	
+</li>
+<li class="slide">
+	<h3>Padding:color behind the text</h3>
+	<ul>
+		<li>padding-top:5px; (-left, -right, -top, -bottom)</li>
+		<li>padding:5px 10px;</li>
+		<li>padding:5px 3px 10px 20px;</li>
+	</ul>	
+	
+</li>
+<li class="slide">
+	<h3>Border:line around the padding</h3>
+	<ul>
+		<li>border-style:solid;</li>
+		<li>border-width:5px;</li>
+		<li>border-color:red;</li>
+		<li>border:5px solid red;</li>
+	</ul>
+</li>
+<li class="slide">
+	<h3>Margin:transparent space around the padding and boarder</h3>
+	<ul>
+		<li>margin-top:5px; (-left, -right, -top, -bottom)</li>
+		<li>margin:5px 10px;</li>
+		<li>margin:5px 3px 10px 20px;</li>
+	</ul>
+</li>
+</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>Box Model Exercise</h2>
+<textarea class='coder-editor coder-editor-split coder-editor-instant'  data-save='S2012-blog-post-chop'>
+<style>
+  #box1 { 
+    background-color:teal;
+  }
+
+  #box2 { 
+    background-color:orange;
+  }
+
+
+</style>
+
+<div id="box1">I'm a box</div>
+<div id="box2">I'm a box 2!</div>
+</textarea>
+</article> 
+
+
+<article class='slide slide-accent'>
+	<h1>How do you layout elements on the page?</h1>
+</article>
+
+
+<article class="slide slide-list">
+<h1>Only two ways to layout:</h1>
+	<ul>
+		<li class="slide">
+    <h3>1. Using floats to align things next to each other</h3>
+		</li>
+		<li class="slide">
+			<h3>2. Use “position:absolute; top:...; left:....” inside of a positioned container.</h3>
+		</li>
+    <style>
+.position-example { 
+  -webkit-transition: -webkit-transform 1s linear; 
+  -webkit-transform: translate(0,0) rotate(0deg); }
+.position-example.deck-current {
+ -webkit-transform: translate(30px,250px) rotate(15deg);
+}
+    </style>
+		<li class="position-example slide">
+    <h3 style=''>(I lied) 3. you can use transforms - but let's ignore those for now</h3>
+		</li>
+	</ul>
+</article>
+
+<article class="slide slide-list">
+<h1>Layout with floats</h1>
+<h3>Use this for content, page elements that need to flow or resize</h3><br/>
+	<ul>
+		<li class="slide">
+    <h3>Use float:left or float:right to float elements</h3>
+		</li>
+		<li class="slide">
+    <h3>Make sure that elements have a width - floating will squeze elements down</h3>
+		</li>
+		<li class="slide">
+    <h3>Make sure to clear your floats otherwise the container won't have a height</h3>
+		</li>
+		<li class="slide">
+    <h3>You need an extra element to clear, or can use the clearfix</h3>
+		</li>
+	</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>Float Exercise</h2>
+<h3>navs are a great example of floating elements - we'll make this from a list</h3>
+<h3><img src="images/nav-floats.png"/></h3>
+</article>
+
+<article class='slide slide-list'>
+<h2>Float Exercise</h2>
+<textarea class='coder-editor coder-editor-split coder-editor-instant' >
+<style>
+
+
+</style>
+
+<nav>
+  <ul>
+    <li>home</li>
+    <li>about</li>
+    <li>shop</li>
+    <li>contact</li>
+  </ul>
+</nav>
+</textarea>
+<script type='coder-solution'>
+<style>
+  li {
+    list-style:none;
+    float:left;
+    margin:10px;
+    background-color:teal;
+    padding:7px 14px;
+    color:white;
+    text-transform:uppercase;
+    font-family:Helvetica;
+  }
+
+
+</style>
+
+<nav>
+  <ul>
+    <li>home</li>
+    <li>about</li>
+    <li>shop</li>
+    <li>contact</li>
+  </ul>
+</nav>
+</script>
+
+</article> 
+
+<article class='slide slide-accent'>
+	<h1>Positioning</h1>
+</article>
+
+<article class="slide slide-list">
+<h1>Position</h1>
+<h3>used for elements that will always stay in the same place (logos, navbars, footers)</h3><br/>
+	<ul>
+		<li class="slide">
+			<h3>position:static</h3>
+		</li>
+		<li class="slide">
+			<h3>position:relative</h3>
+		</li>
+		<li class="slide">
+			<h3>position:absolute</h3>
+		</li>
+		<li class="slide">
+			<h3>position:fixed</h3>
+		</li>				
+	</ul>
+</article>
+
+<article class="slide slide-list">
+<h1>Position Static</h1>
+	<ul>
+		<li class="slide">
+			<h3>The default - all elements are set to this already</h3>
+		</li>
+	</ul>
+</article>
+
+<article class="slide slide-list">
+<h1>Position Relative</h1>
+	<ul>
+		<li class="slide">
+			<h3>Same as Static until you set coordinates</h3>
+		</li>
+		<li class="slide">
+			<h3>Use coordinates to move the item "relative" to where it is normally<br/>
+				example: top:0px; left:0px;<br/>
+				example: bottom:5px; right:20px;</h3> 
+		</li>
+		<li class="slide">
+			<h3>When you move things relatively, the space they take-up on the page stays the same</h3>
+		</li>
+	</ul>
+</article>
+
+
+<article class="slide slide-list">
+<h1>Position Absolute</h1>
+	<ul>
+		<li class="slide">
+			<h3>Can move elements anywhere using top, left, right, bottom</h3>
+		</li>
+		<li class="slide">
+			<h3>Warning: when you position absolutely the page element is removed completely from the flow of the page</h3>
+		</li>		
+		<li class="slide">
+			<h3>Use “position:relative” to create an zone for absolutely positioning content</h3>
+		</li>
+		<li class="slide">
+			<h3>Use “position:absolute; top:...; left:....” to place something inside that zone.</h3>
+		</li>
+	</ul>
+</article>
+
+<article class="slide slide-list">
+<h1>Position Fixed</h1>
+	<ul>
+		<li class="slide">
+			<h3>Use rarely - usually only for sticky navbars (page will scroll and nav stays at the top or bottom)</h3>
+		</li>
+	</ul>
+</article>
+
+<article class='slide slide-list'>
+<h2>Positioning Exercise</h2>
+<h3>using position:relative and absolute let's try to make this</h3>
+<h3><img src="images/positioning-ex.gif"/></h3>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Positioning Exercise</h2>
+<textarea class='coder-editor coder-editor-split coder-editor-instant' >
+<style>
+  #container { 
+    background-color:lightgray; 
+    margin:20px; height:400px; 
+  }
+
+  .block1 {
+    background-color:orange;
+    padding:50px;
+  }
+
+  .block2 {
+    background-color:red;
+    padding:50px;
+  }
+
+  .block3 {
+    background-color:teal;
+    padding:50px;
+  }
+
+</style>
+<section id='container'>
+	  <div class='block1'></div>
+	  <div class='block2'></div>
+	  <div class='block3'></div>
+</section>
+</textarea>
+<script type='coder-solution'>
+<style>
+  #container { 
+    background-color:lightgray; 
+    margin:20px; height:400px; 
+    position:relative;
+  }
+
+  .block1 {
+    background-color:orange;
+    padding:50px;
+    position:absolute;
+  }
+
+  .block2 {
+    background-color:red;
+    padding:50px;
+    position:absolute;
+    top:100px; 
+    left:100px;
+  }
+
+  .block3 {
+    background-color:teal;
+    padding:50px;
+    position:absolute;
+    bottom:0;
+    right:0;
+  }
+
+</style>
+<section id='container'>
+	  <div class='block1'></div>
+	  <div class='block2'></div>
+	  <div class='block3'></div>
+</section>
+
+</script>
+</article> 
+
+
+
+<article class='slide slide-list'>
+<h1>Combining Floats and Positioning</h1>
+<img src='images/position-exercise.png'/>
+</article>
+
+
+<article class='slide slide-list'>
+<h2>Floats and Positioning Exercise</h2>
+<textarea class='coder-editor coder-editor-full' data-coder-template="coderdeck-plain" id='coderdeck-default' data-save='fall2012-positioning'>
+<style>
+  #container { background-color:lightgray; margin:20px; height:300px; }
+
+
+</style>
+<div id='site'>
+Above Container
+<div id='container'>
+  <div id='top-left'>I'm in the top left!</div>
+  <div id='bottom-right'>I'm in the bottom right!</div>
+  <div class='blocks'>
+	  <div class='block'></div>
+	  <div class='block'></div>
+	  <div class='block'></div>
+	  <div class='block'></div>
+  </div>
+</div>
+Below Container
+</div>
+</textarea>
+</article> 
+
+
+<article class='slide slide-accent'>
+	<h1>More Layout Techniques</h1>
+</article>	
+
+<article class="slide slide-subhead">
+	<h1>Start with<br/> your reset</h1>
+	<p>Eric Meyer Reset<br/>
+		<a href="http://meyerweb.com/eric/tools/css/reset/">http://meyerweb.com/eric/tools/css/reset/</a>
+	</p>
+	<h2><a href="http://bit.ly/meyerreset">http://bit.ly/meyerreset</a>
+	</h2>	
+</article>
+
+<article class='slide slide-list'>
+	<h1>Centering Content</h1>
+	<h3>Give it a width and set margin: 0 auto;</h3>
+<pre>
+body {
+  margin:0 auto;
+  width:960px;
+}
+	</pre>
+</article>	
+
+<article class="slide slide-list">
+<h1>Nitty Gritty</h1>
+	<ul>
+		<li class="slide">
+			<h3>Using HTML5 tags - use a shiv<br/> <a href="http://code.google.com/p/html5shiv/">http://code.google.com/p/html5shiv/</a><br/>
+				(Or Modernizr, which we’ll discuss later)</h3>
+		</li>
+		<li class="slide">
+			<h3>Link to your stylesheet with a link tag in your &lt;head&gt;:<br/> 
+				<pre>&lt;link type=‘text/css’ rel=‘stylesheet’ href=‘style.css’ /&gt;</pre>
+			</h3>
+		</li>
+	</ul>
+</article>
+
+<article class="slide slide-subhead">
+<h1>Beginner Mistakes</h1>
+	<h3><a href="http://css-tricks.com/css-beginner-mistakes-1/">Beware of Divitus and Classitus</a></h3>
+</article>
+
+
+
+<article class="slide slide-list">
+<h1>Basic Chop 101</h1>
+	<ul>
+		<li class="slide">
+			<h3>Relatively positioned header</h3>
+		</li>
+		<li class="slide">
+			<h3>Absolutely positioned top nav</h3>
+		</li>
+		<li class="slide">
+			<h3>Image replacement logo</h3>
+		</li>
+		<li class="slide">
+			<h3>Floated menu items</h3>
+		</li>
+		<li class="slide">
+			<h3>Floated body</h3>
+		</li>
+		<li class="slide">
+			<h3>Relatively positioned footer</h3>
+		</li>	
+	</ul>
+</article>
+
+<article class="slide slide-list">
+<h2>CSS Code</h2>
+	<pre>body { width:960px; margin:0 auto; }
+		
+header#site-header {
+  position:relative; height:80px;
+}
+
+#site-header h1 a { 
+  display:block;	
+  text-indent:-9999px;    
+  position:absolute;
+  width:300px; height:80px;
+  background:url(logo.png) no-repeat left top;
+}
+nav#top-nav { position:absolute; right:0px; top:0px; }
+
+nav#main-menu { height:30px; background-color:black; }
+nav#main-menu ul li { display:block; float:left; padding:0 5px; }
+nav#main-menu ul li a { display:block; color:white; padding:5px 5px; background-color:blue; }
+
+section#page-content { float:left; width:550px; padding:50px 20px; }
+aside#sidebar { float:right; width:220px; padding:50px 10px;; }
+
+footer#site-footer {     clear:both; background-color:black;     color:white; padding:10px 0px;  }</pre>
+</article>
+
+<article class="slide slide-list">
+<h1>Floats, Clears and Clearfix</h1>
+	<ul>
+		<li class="slide">
+			<h3>Put a background on your wrapper. What happens?</h3>
+		</li>
+		<li class="slide">
+			<h3>Have to clear your floats, or use a clearfix.</h3>
+		</li>
+		<li class="slide">
+			<h3>Will affect your content centering margin.</h3>
+		</li>
+	</ul>
+</article>
+
+
+<article class="slide slide-list">
+<h2>Clearfix</h2>
+	<pre>.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+	}
+
+.clearfix { display: inline-block; }
+  html[xmlns] .clearfix { display: block; }
+  * html .clearfix { height: 1%; }</pre>
+</article>
+
+<article class="slide slide-image">
+	<h2>Exercise: Pulling it all Together</h2>
+	<img src='images/screenshot.png'/>
+</article>
+	
+<article class='slide slide-list'>
+<h2>Exercise: Pulling it all Together</h2>
+<textarea class='coder-editor coder-editor-full'>
+
+<style>
+
+
+</style>
+	
+<header id='site-header'>
+  <h1>Logo</h1>
+  <nav id='top-nav'>top-nav</nav>
+</header>
+
+<nav id='main-menu'>
+  <ul>
+   <li>main menu</li>
+   <li>main menu</li>
+   <li>main menu</li>
+  </ul>	
+</nav>
+
+<article id='page'>
+    <h1>Header 1</h1>
+    <h2>Subhead</h2>
+    <p>Text goes here, remember it's length might vary, so you might not want to set a specific height. Floating might be good.</p>
+
+    <h2>Subhead</h2>
+    <p>ext goes here, remember it's length might vary, so you might not want to set a specific height. Floating might be good.</p>
+</article>
+
+<aside id='sidebar'>
+  <h1>Sidebar</h1>
+  <ul>
+    <li>Sidebar list</li>
+    <li>Sidebar list</li>
+    <li>Sidebar list</li>
+  </ul>
+</aside> <!-- end #sidebar -->
+	
+<footer id='site-footer'>
+  <section id='footer-content'>
+    <h1>Footer</h1>     
+  </section>
+</footer>
+
+</textarea>
+<script type='coder-solution'>
+
+<style>
+
+body {
+	width:960px;
+	margin:0 auto;
+}
+
+#site-header {
+	position:relative;
+	height:120px;
+	background-color:#d4e0a3;
+	
+}
+
+#site-header h1 {
+	position:absolute;
+	display:block;
+	width:250px;
+	height:100px;
+	background-color:white;
+	left:15px;
+}
+#top-nav { 
+	position:absolute;
+	right:15px;
+	width:150px;
+	height:20px;
+	background-color:white;
+}
+
+	
+
+#main-menu {
+	position:relative;
+	height:55px;
+	background-color:#4f3a11;
+}	
+#main-menu li{
+	float:left;
+	display:block;
+	padding:10px;
+	margin:10px 0px 5px 15px;
+	background-color:white;
+}	
+
+
+#page { 
+	float:left; 
+	width:60%;
+	background-color:#fffac2;
+	margin:20px 15px;
+	padding:10px;
+}	
+
+#sidebar {
+	float:right;
+	width:30%;
+	margin-top:20px;
+	padding:10px;
+	background-color:#fffac2;
+}	
+
+#site-footer {
+	clear:both;
+	position:relative;
+	height:55px;
+	background-color:#4f3a11;
+}
+
+#footer-content h1 {
+	background-color:white;
+	float:left;
+	width:20%;
+	margin:15px 15px;
+}
+
+</style>
+	
+<header id='site-header'>
+  <h1>Logo</h1>
+  <nav id='top-nav'>top-nav</nav>
+</header>
+
+<nav id='main-menu'>
+  <ul>
+   <li>main menu</li>
+   <li>main menu</li>
+   <li>main menu</li>
+  </ul>	
+</nav>
+
+<article id='page'>
+    <h1>Header 1</h1>
+    <h2>Subhead</h2>
+    <p>Text goes here, remember it's length might vary, so you might not want to set a specific height. Floating might be good.</p>
+
+    <h2>Subhead</h2>
+    <p>ext goes here, remember it's length might vary, so you might not want to set a specific height. Floating might be good.</p>
+</article>
+
+<aside id='sidebar'>
+  <h1>Sidebar</h1>
+  <ul>
+    <li>Sidebar list</li>
+    <li>Sidebar list</li>
+    <li>Sidebar list</li>
+  </ul>
+</aside> <!-- end #sidebar -->
+	
+<footer id='site-footer'>
+  <section id='footer-content'>
+    <h1>Footer</h1>     
+  </section>
+</footer>
+
+</script>
+</article>
+
+
+
+<article class='slide slide-homework'>
+<h2>Homework</h2>
+<h3 class='slide'>Reading</h3>
+	<ul class='slide'>	
+		<li>
+			<h3>Duckett, Chapters 10, 15, 16</h3>
+		</li>
+		<li>
+            <h3><a href='http://www.alistapart.com/articles/css-floats-101/'>CSS Floats 101</a>
+			</h3>
+		</li>
+		<li>
+            <h3><a href='http://www.alistapart.com/articles/css-positioning-101/'>CSS Positioning 101</a>
+			</h3>
+		</li>
+	</ul>
+	
+	<h3 class='slide'>Coding</h3>
+       <ul class='slide'>
+			<li>
+				<h3>Style the Layout of your Recipe card (create a css sheet, add in class &amp; id hooks to your html if needed)</h3>				
+			</li>
+			<li>
+				<h3>Style the Layout of  Cats vs. Dogs (we'll apply formatting style later)</h3>
+			</li>
+			<li>
+				<h3>Style the Layout of  Llama Love</h3>
+			</li>
+		</ul>
+</ul>	
+	
+	
+</article>
+
+<article class='slide slide-list'>
+	<h2>Llama Homework</h2>
+	<p>Default paragraphs to two paragraphs, with floated images<br/>
+		<h3><br/><img src="images/css-default.png" class='top-image'/><br/><br/></h3>
+</article>
+
+
+<article class='slide slide-list'>
+	<h2>Llama End Result</h2>
+		<h3><br/><img src="images/css-style.png" class='top-image'/><br/><br/></h3>
+</article>
+
+<article class='slide slide-list'>
+	<h2>Layout for Cats vs. Dog</h2>
+		<h3><br/><img src="images/dogsvscat.png" class='top-image'/><br/><br/></h3>
+</article>
+
+
+<!-- Update these paths to point to the correct files. -->
+<script src="src/jquery.tmpl.min.js"></script>
+<script src="src/deck.js/core/deck.core.js"></script>
+
+<!-- Code Mirror -->
+<script src="src/codemirror/lib/codemirror.js"></script>
+<script src="src/codemirror/mode/xml/xml.js"></script>
+<script src="src/codemirror/mode/css/css.js"></script>
+<script src="src/codemirror/mode/javascript/javascript.js"></script>
+<script src="src/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+
+<!-- Prettify -->
+<script src="src/prettify.js"></script>
+
+<!-- Deck Core and extensions -->
+<script src="src/deck.js/extensions/status/deck.status.js"></script>
+<script src="src/deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src='src/deck.coder.js'></script>
+<script src="src/deck.js/extensions/hash/deck.hash.js"></script>
+<script src="src/deck.js/extensions/menu/deck.menu.js"></script>
+
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>
