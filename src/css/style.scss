@@ -56,23 +56,22 @@ $link-color:#777;
 $gray-color:#CCC;
 
 @mixin sans-font {
-	font-family:'Oswald', sans-serif;
-	font-weight:400;	
+	font-family: "proxima-nova-condensed",Helvetica, sans-serif; font-weight:800;	
 	text-transform: uppercase;
 } 
 
 @mixin sans-bold-font {
 	font-style: normal;
-	font-weight: 700;
-	font-family: 'Oswald', sans-serif;
+	font-family: "proxima-nova-condensed",Helvetica, sans-serif; font-weight:800;	
 	text-transform: uppercase;	
 }
 
 @mixin serif-font {
-	font-family: Georgia, serif;
-	font-weight:normal;
+	font-family:"adelle",Georgia, serif;  
+	font-weight:300;
 	text-transform:none;
 }
+
 
 
 
