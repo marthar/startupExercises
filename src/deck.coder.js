@@ -1,56 +1,55 @@
 /*!
- *Copyright (c) 2011 Cykod LLC
+ Copyright (c) 2011 Cykod LLC
  Dual licensed under the MIT license and the GPL license
-
 */
 
 
 /*
 This module adds a code editor that shows up in individual slides
-
 */
 
 
 
 (function($, deck, window, undefined) {
   var $d = $(document),
-  $window = $(window),
-  editorFocused = false
+    $window = $(window),
+    savedGistData = {};
+
+  function unsanitize(str) {
+   return addScript(str).replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+  }
+
+  function addScript(str) {
+   return str.replace(/SCRIPTEND/g,'</s' + 'cript>').replace(/SCRIPT/g,'<script>')
+  }
 
   function runCode(element,template) {
     iframe = document.createElement("IFRAME"); 
-    iframe.style.width = ($(element).parent().width()-2) + "px";
-    iframe.style.height = ($(element).parent().height()-2) + "px";
-    iframe.style.overflow = 'auto';
-    iframe.style.border ="none";
 
     var dest = $(element).attr('data-target');
     var destination = $("#" + dest );
+    iframe.className = "coder-iframe";
+    iframe.style.width = (destination.parent().width()-2) + "px";
+    iframe.style.height = (destination.parent().height()-2) + "px";
+    iframe.style.overflow = 'auto';
+    iframe.style.border ="none";
+
     $(destination).html("").append(iframe);
 
 
     var editor = $(element).data('editor');
     var code = editor.getValue();
 
-    var language = $(element).attr('data-language');
-
-
     if($(element).attr('data-save')) {
       localStorage[$(element).attr('data-save')] = code;
     }
 
-    if(language == 'js') {
-      code = "<scr" + "ipt>\n" + code + "\n</scr" + "ipt>";
-    }
-
     var tmpl = $(template ? "#" + template : "#coderdeck-default").html();
 
-    code = "<!DOCTYPE HTML>" + tmpl.replace(/END/,'</s' + 'cript>').replace(/CODE/,code);
+    code = "<!DOCTYPE HTML>" + addScript(tmpl).replace(/CODE/,code);
 
     writeIFrame(iframe,code);
   }
-
-
 
   function writeIFrame(iframe,code) {
     iframe = (iframe.contentWindow) ? iframe.contentWindow : (iframe.contentDocument.document) ? iframe.contentDocument.document : iframe.contentDocument;
@@ -60,150 +59,125 @@ This module adds a code editor that shows up in individual slides
   }
 
 
+  // Prepare a slide to give unique id to code editor, create run destinations
+  // and match code editors with solutions and destinations
+  function prepareSlide(idx,$el) {
+    var slide = $($el);
+    var $element =slide.find(".coder-editor"); 
+    var solution = slide.find("script[type=coder-solution]")[0]
+    var config = {
+      isFull:     $element.hasClass("coder-editor-full"),
+      isInstant:  $element.hasClass('coder-editor-instant'), 
+      isSolution: !!solution,
+      isSaving:   $element.attr('data-save'),
+      language:   $element.attr('data-language')
+    };
 
- function focusCallback() {
-   disableKeyboardEvents = true;
+    slide.attr('data-slide-id', idx);
+
+    var fullClass = config.isFull ? " coder-wrapper-full" : " coder-wrapper-split";
+
+    slide.find(".coder-editor").attr({
+      'id': 'editor-' + idx,
+      'data-target' : 'destination-' + idx
+    }).wrapAll("<div class='coder-wrapper" + fullClass + "'><div class='coder-editor-wrapper' id='wrapper-" + idx + "'></div></div>").css('position','static');
+
+    $("<div class='coder-destination' id='destination-" + idx + "'></div>").insertAfter("#wrapper-"+idx);
+    if(solution) {
+      $(solution).attr({ 'id' : 'solution-' + idx });
+      slide.find(".coder-editor").attr({ 'data-solution' : 'solution-' + idx });
+    }
+
+    $element.data("config", config);
+
+
+    // If we're showing the current slide,
+    // launch the editors/etc
+    if($.deck('getSlide')[0] == $el[0]) {
+      displayCodeSlide($el);
+    }
   }
 
-  function blurCallback() {
-    disableKeyboardEvents = false;
+  function loadFromLocalStorage($element,config) {
+    if(localStorage[$element.attr('data-save')]) {
+      config.html = localStorage[$element.attr('data-save')];
+    }
   }
 
+  function setupCodeEditor(currentSlide,$container,$element,$destination,config) {
+    var editorOptions = { 
+      lineNumbers: true,
+      onFocus: function() { editorFocused = true; },
+      onBlur: function() { editorFocused = false; },
+      mode: config.language || "htmlmixed"
+    };
 
-  $d.bind('deck.init',function() {
+    if(config.isInstant) {
+      $destination.show();
+      var changeTimer = null;
+      editorOptions['onChange'] =  function() { 
+        clearTimeout(changeTimer);
+        changeTimer = setTimeout(function() {
+          runCode($element,$element.attr('data-coder-template'));
+        }, 50);
+      };
 
-    $("a").attr('target','_blank');
+    }
+    var editor = CodeMirror.fromTextArea($element[0], editorOptions );
 
-    $.each($[deck]('getSlides'), function(idx, $el) {
-      var slide = $($el);
+    $element.data('editor',editor);
+    $(editor.getScrollerElement()).height($(currentSlide).height() - $container.position().top - 80);
+    $container.addClass('coderEditor');
+    $destination.height($(currentSlide).height() - $container.position().top - 80);
+    editor.setValue(config.html);
+    return editor;
+  }
 
-      var element =slide.find(".coder-editor"); 
-      var full = $(element).hasClass('coder-editor-full');
-      var fullClass = full ? " coder-wrapper-full" : " coder-wrapper-split";
+  function createButtonWrapper($wrapper) {
+    return $("<div class='coder-buttons'>").insertBefore($wrapper);
 
-      $(element).data('full',full);
-      $(element).data('instant',element.hasClass('coder-editor-instant'));
+  }
 
-      slide.find(".coder-editor").attr({
-        'id': 'editor-' + idx,
-        'data-target' : 'destination-' + idx
-        }).wrapAll("<div class='coder-wrapper" + fullClass + "'><div class='coder-editor-wrapper' id='wrapper-" + idx + "'></div></div>").css('position','static');
+  function createBackbutton($wrapper,callback) {
+    return $("<button>Back</button>").appendTo($wrapper).click(callback).hide();
+  }
 
-       $("<div class='coder-destination' id='destination-" + idx + "'></div>").insertAfter("#wrapper-"+idx);
-        var solution = slide.find("script[type=codedeck]")[0]
-        if(solution) {
-          $(solution).attr({ 'id' : 'solution-' + idx });
-          slide.find(".coder-editor").attr({ 'data-solution' : 'solution-' + idx });
-        }
+  function createSolution($wrapper,callback) {
+    return $("<button>Solution</button>").appendTo($wrapper).click(callback);
+  }
 
-      });
+  function createRunButton(config,$wrapper,callback) {
+    var buttonName = config.isSaving ? "Run/Save" : "Run";
+    return $("<button>" + buttonName + "</button>").appendTo($wrapper).click(callback);
+  }
 
-      
-      $d.unbind('keydown.deck').bind('keydown.deck', function(e) {
-        if(!editorFocused) {
-          switch (e.which) {
-            case $.deck.defaults.keys.next:
-            $.deck('next');
-            e.preventDefault();
-            break;
-            case $.deck.defaults.keys.previous:
-            $.deck('prev');
-            e.preventDefault();
-            break;
-          }
-        }
-      });
+  function resizeEditors(currentSlide,$container) {
+    var $element = $container.find('.coder-editor');
+    var $destination = $("#" + $element.attr('data-target'));
 
+    var editor = $element.data("editor");
+    var height = $(currentSlide).height() - $container.position().top - 80;
+    $(editor.getScrollerElement()).height(height);
+    $destination.height(height);
+  }
 
-  });
+  function generateCodeSlide($container,currentSlide) { 
+    var $element = $container.find('.coder-editor');
+    var $wrapper = $container.find('.coder-editor-wrapper');
+    var $destination = $("#" + $element.attr('data-target'));
 
+    var config = $element.data("config");
+    config.html = unsanitize($element.html());
 
-  $d.bind('deck.change',function(e,from,to) {
-    var current =$[deck]('getSlide', to);
-        
-    current.find(".coder-wrapper").each(function() {
-      if(!$(this).hasClass('coderEditor')) {
-
-        var element = $(this).find('.coder-editor');
-        var wrapper = $(this).find('.coder-editor-wrapper');
-
-        var html = element.html().replace(/SCRIPT/g,'<script>').replace(/END/,'</s' + 'cript>').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
-
-        if($(element).attr('data-save') && localStorage[$(element).attr('data-save')]) {
-         html = localStorage[$(element).attr('data-save')];
-       }
-
-        var isFull = $(element).data('full');
-        var isInstant = $(element).data('instant');
-
-        $(element).css('visibility','visible');
-
-        var editorOptions = { 
-          lineNumbers: true,
-          onFocus: function() { editorFocused = true; },
-          onBlur: function() { editorFocused = false; },
-          mode: 'htmlmixed'
-        };
-
-        var dest = $(element).attr('data-target');
-        var destination = $("#" + dest );
-
-
-        if(isInstant) {
-          $(destination).show();
-          editorOptions['onChange'] =  function() { runCode(element,$(element).attr('data-coder-template')); }
-             
-        }
-        var editor = CodeMirror.fromTextArea(element[0], editorOptions );
-
-        $(element).data('editor',editor);
-
-
-        $(editor.getScrollerElement()).height($(current).height() - $(this).position().top - 80);
-        $(this).addClass('coderEditor');
-
-
-        var language = $(element).attr('data-language');
-
-
-        destination.height($(current).height() - $(this).position().top - 80);
-
-
-        editor.setValue(html);
-
-        if(!isInstant) {
-          $("<button>Run</button>").insertBefore(wrapper).click(function() {
-            if(isFull) {  
-              $(wrapper).hide();
-            }
-            $(destination).show();
-            runCode(element,$(element).attr('data-coder-template'));
-
-          });
-        }
-
-        if(isFull) { 
-          $("<button>Back</button>").insertBefore(wrapper).click(function() {
-            $(destination).toggle();
-            $(wrapper).toggle();
-          });
-        }
-
-        var solution = element.attr('data-solution');
-        if(solution) {
-          $("<button>Solution</button>").insertBefore(wrapper).click(function() {
-              var html = $("#" + solution).html().replace(/SCRIPT/g,'<script>').replace(/END/,'</s' + 'cript>');
-          editor.setValue(html);
-
-          });
-        }
+    if($container.hasClass('coderEditor')) {
+      if(config.isInstant) {
+        $destination.show();
+        setTimeout(function() {
+          runCode($element,$element.attr('data-coder-template'));
+        },10);
       }
-    });
-    
-  });
-
-})(jQuery,'deck',this);
-}
+      return;
+    }
 
     if(config.isSaving) { loadFromLocalStorage($element,config); }
 
