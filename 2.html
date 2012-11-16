@@ -186,53 +186,6 @@
 </ul>
 </article>
 
-<article class='slide slide-list'>
-<h2>Pay attention to your class and id names!</h2>
-<ul><li class="slide">
-	<h3>You can't use spaces.</h3>
-</li>
-<li class="slide">
-	<h3>You shouldn't use underscores (_) - altough technically now permitted</h3>
-</li>
-<li class="slide">
-	<h3>Use camelCase or dashes-to-separate-names</h3>
-</li>
-<li class="slide">
-	<h3>I'd recommend dashes - css uses Dashses (<em>background-color, font-family</em>), <br/>
-		Javascript uses camelCase</h3>
-</li>
-<li class="slide">
-	<h3>Be consistent! - easier to read and remember what you wrote.</h3>
-</li>
-</ul>
-</article>
-
-<article class="slide slide-list">
-<h1>Properties</h1>
-<ul>
-<li class="slide">
-	<h3>There are lots of them</h3>
-</li>
-<li class="slide">
-	<h3>Two Primary types: Layout, Style<br/>
-	(Padding is layout, color is style)</h3>
-</li>
-<li class="slide">
-	<h3>Style generally inherit, Layout don’t</h3>
-</li>
-<li class="slide">
-	<h3>Sometimes can be combined into one: e.g.<br/>
-	<em>font = font-family, font-style, font-variant, ...</em><br/>
-	<em>background = background-color, background-image, background-repeat, background-attachment, background-position ...</em><br/>
-	<em>padding = padding-top, padding-right, padding-bottom, padding-left ...</em></h3>
-</li>
-<li class="slide">
-	<h3>Layout box properties go clockwise from  midnight: top, right, bottom, left</h3>
-</li>
-</ul>
-</article>
-
-
 <article class="slide slide-list">
 <h1>Values</h1>
 <ul>
@@ -244,36 +197,8 @@
 		<em>em's are 'M' height - and these inherit (multiply)</em>
 	</h3>
 </li>
-<li class="slide">
-	<h3>“inherit” is a special property to force inheritence</h3>
-</li>
 </ul>
 </article> 
-
-<article class="slide slide-list">
-<h1>Basic Non-responsive Chop 101</h1>
-	<ul>
-		<li class="slide">
-			<h3>Relatively positioned header</h3>
-		</li>
-		<li class="slide">
-			<h3>Absolutely positioned top nav</h3>
-		</li>
-		<li class="slide">
-			<h3>Image replacement logo</h3>
-		</li>
-		<li class="slide">
-			<h3>Floated menu items</h3>
-		</li>
-		<li class="slide">
-			<h3>Floated body</h3>
-		</li>
-		<li class="slide">
-			<h3>Relatively positioned footer</h3>
-		</li>	
-	</ul>
-</article>
-
 
 
 <article class='slide slide-accent'>
@@ -498,96 +423,14 @@ p {
 </textarea>
 </article>
  
-<article class='slide slide-accent'>
-	<h1>Cascading</h1>
-</article>
-
-<article class="slide slide-list">
-<h1>Cascading Hierarchy</h1>
-<ol>
-<li class="slide">
-	<h3>Inline style (those defined directly with a style='....' attribute in the tag)</h3>
-</li>
-<li class="slide">
-	<h3>Number of ID selectors</h3>
-</li>
-<li class="slide">
-	<h3>Number of Class selectors</h3>
-</li>
-<li class="slide">
-	<h3>Number of tag selectors</h3>
-</li>
-<li class="slide">
-	<h3>Order of appearance last to first</h3>
-</li>
-<li class="slide">
-	<h3>Style inheritance</h3>
-</li>
-</ol>
-</article>
-
-
 <article class='slide slide-list'>
-<h2>Cascading - What Color?</h2>
-<textarea class='coder-editor coder-editor-full' data-coder-template="coderdeck-plain" id='coderdeck-default'>
+<h2>Let's Give this a Try! </h2>
+<textarea class='coder-editor coder-editor-split coder-editor-instant' data-coder-template="coderdeck-css-playground" data-language='html'>
 <style>
-  p { color:red;}
-  .blue { color:blue; }
-  #menu p { color:black; }
-</style>
 
-<div id="menu"><p class='blue'>This is the paragraph</p></div>
+</style>
 </textarea>
 </article>
-
-
-<article class="slide slide-list">
-	<h1>Organizing Your CSS</h1>
-	<ol>
-		<li class='slide'>
-			<h3>Start with your reset</h3>
-		</li>	
-		<li class="slide">
-			<h3>Set your body</h3>
-		</li>
-		<li class="slide">
-			<h3>Set your base element styles (p, h1, h2, blockqoute)</h3>
-		</li>
-		<li class="slide">
-			<h3>Set your reusable class styles</h3>
-		</li>
-		<li class="slide">
-			<h3>Set your layout styles</h3>
-		</li>
-		<li class="slide">
-			<h3>Set your module styles (additional sub-themes like blogs,custom pages, etc )</h3>
-		</li>
-	</ol>	
-</article>	
-
-<article class='slide slide-accent'>
-<h1>Logo Replacement</h1>
-</article>
-
-<article class='slide slide-list'>
-<h2>Logo Replacement</h2>
-<textarea class='coder-editor coder-editor-split' data-coder-template="coderdeck-plain" id='coderdeck-default'>
-&lt;style&gt;
-#site-header h1 a {
- display:block;  
- width:300px; 
- height:80px;  
- background:url(images/logo.png) no-repeat top left; 
- text-indent:-9999px;
- }
-</style>
-<header id='site-header'>
- <h1><a href='#'>My Awesome Website</a></h1>
-</header>
-</textarea>
-</article>
-
-
 
 <article class='slide slide-accent'>
 <h1>Navbar Excercise 1: Styling</h1>
