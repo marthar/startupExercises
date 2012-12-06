@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="style.css">
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,700|Six+Caps' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <header class="container">
+        <h1>Best Location App Ever</h1>
+        <p>This is the landing page for the best location app ever made.</p>
+		<p>You should sign up for our newsletter today!</p>
+	   <input type="email" name="contact[email]" placeholder="name@domain.com" class="input">
+	   <input type="submit" name="submit" id="submit" value="Join Our List" class="push-button blue" />
+    </header>
+
+    <script src="jquery.backstretch.js"></script>
+	<script>
+        $.backstretch([
+          "images/phone1.jpg",
+          "images/phone2.jpg",
+          "images/phone3.jpg"
+        ], {
+            fade: 750,
+            duration: 4000
+        });
+    </script>
+</body>
+</html>

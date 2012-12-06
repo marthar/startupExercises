@@ -1,0 +1,154 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ----END OF RESET----*/
+
+
+body { 
+	font-family: Helvetica, Arial, sans-serif; 	
+}
+
+.container {
+	 width: 50%;
+	 float:left;
+	 margin:40px 0 0 50px;
+	 padding: 20px;
+	 color: #fff;
+}
+
+h1 {
+	font-family: 'Oswald', sans-serif; 
+	text-transform:uppercase; 
+	font-size:60px; 
+	padding:10px 0;
+	line-height:1.1em;
+	margin:20px 0;
+	text-shadow:;
+}
+
+p {
+	line-height:1.23em;
+	padding:5px 0px;
+}
+	
+.input { 
+	display:block; 
+	padding:5px 10px;
+	width:50%;
+	border-radius:5px;
+	font-size:15px;
+	margin:10px 2px;
+}
+ /*fancy button*/
+
+	.push-button {
+		position: relative;
+		padding:10px 20px;
+		text-align:center;
+		color:#FFF;
+		font-size:20px;
+		display: block;
+		margin-top: 20px;
+	}
+	.push-button:before {
+		background:#f0f0f0;
+		background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#D0D0D0), to(#f0f0f0));
+
+		-webkit-border-radius:5px;
+		-moz-border-radius:5px;
+		border-radius:5px;
+
+		-webkit-box-shadow:0 1px 2px rgba(0, 0, 0, .5) inset, 0 1px 0 #FFF; 
+		-moz-box-shadow:0 1px 2px rgba(0, 0, 0, .5) inset, 0 1px 0 #FFF; 
+		box-shadow:0 1px 2px rgba(0, 0, 0, .5) inset, 0 1px 0 #FFF;
+
+		position: absolute;
+		content: "";
+		left: -6px; right: -6px;
+		top: -6px; bottom: -10px;
+		z-index: -1;
+	}
+
+	.push-button:active {
+		-webkit-box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset;
+		top:5px;
+	}
+	.push-button:active:before{
+		top: -11px;
+		bottom: -5px;
+		content: "";
+	}
+	
+	.blue {
+		text-shadow:-1px -1px 0 #2C7982;
+		background: #3EACBA;
+		border:1px solid #379AA4;
+		background-image:-webkit-linear-gradient(top, #48C6D4, #3EACBA);
+		background-image:-moz-linear-gradient(top, #48C6D4, #3EACBA);
+		background-image:-ms-linear-gradient(top, #48C6D4, #3EACBA);
+		background-image:-o-linear-gradient(top, #48C6D4, #3EACBA);
+		background-image:linear-gradient(top, #48C6D4, #3EACBA);
+
+		-webkit-border-radius:5px;
+		-moz-border-radius:5px;
+		border-radius:5px;
+
+		-webkit-box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, .5);
+		-moz-box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, .5);
+		box-shadow:0 1px 0 rgba(255, 255, 255, .5) inset, 0 -1px 0 rgba(255, 255, 255, .1) inset, 0 4px 0 #338A94, 0 4px 2px rgba(0, 0, 0, .5);
+	}
+
+	.blue:hover {
+		background: #48C6D4;
+		background-image:-webkit-linear-gradient(top, #3EACBA, #48C6D4);
+		background-image:-moz-linear-gradient(top, #3EACBA, #48C6D4);
+		background-image:-ms-linear-gradient(top, #3EACBA, #48C6D4);
+		background-image:-o-linear-gradient(top, #3EACBA, #48C6D4);
+		background-image:linear-gradient(top, #3EACBA, #48C6D4);
+	}
