@@ -111,318 +111,100 @@
 </article>
 
 <article class='slide slide-image'>
-		<img src="images/landing.jpg" class='top-image'/>
+		<a href="http://marthar.github.com/startupExercises/landing-demo/index.html"><img src="images/landing.jpg" class='top-image'/></a>
+		<p>click image to open page</p>
 </article>
 
 
 <article class='slide slide-list' >
-<h2>Where do we prefer?</h2>
-<p>Also Similar to CSS - the less 'inline' the better. (Generalization)</p>
+<h2>What will we use?</h2>
   <ul>
-    <li class='slide'/><h3><b>Downright Bad:</b> Include as an event</h3></li>
-    <li class='slide'/><h3><b>Even Less Good:</b> Include in the &lt;body&gt; tag</h3></li>
-    <li class='slide'/><h3><b>Less Good:</b> Include in the &lt;head&gt; tag</h3></li>
-    <li class='slide'/><h3><b>Best:</b> Include external .js file</h3></li>
+    <li class='slide'/><h3>images we have (or will take)</h3></li>
+    <li class='slide'/><h3>a free iPhone file from dribbble</h3></li>
+    <li class='slide'/><h3>a jQuery library to create a full screen image</h3></li>
+    <li class='slide'/><h3>a jQuery library to rotate through our background images</h3></li>
+	<li class='slide'/><h3>a Google Font</h3></li>
+	<li class='slide'/><h3>HTML5 Forms</h3></li>
+	<li class='slide'/><h3>a CSS3 button generator</h3></li>
   </ul>
 </article>
 
-
-<article class='slide slide-subhead'>
- <h1>Disclaimer:</h1>
- <h2>Programming is <em>Hard</em></h2>
-</article>
-
-<article class='slide slide-subhead'>
-<h1>We'll do our best..</h1>
-<h2>But you're not going to learn it in a day. It take a lot longer than that...</h2>
-</article>
-
-<article class='slide slide-list'>
-  <h2>Where does Javascript go?</h2>
-  <p>Similar to CSS - multiple options (notice: type='text/javascript' <em>NOT</em> required in HTML5):</p>
-  <ul>
-    <li>Include external .js file via:
-      <pre class='prettyprint'>&lt;script src='file.js'&gt;&lt;/script&gt;</pre>
-    </li>
-    <li>Include in the &lt;head&gt; tag
-     <pre class='prettyprint'>&lt;script&gt;
- Our Javascript Code Goes Here
-&lt;/script&gt;</pre>
-    </li>
-    <li>Include in the &lt;body&gt; tag
-    <pre class='prettyprint'>&lt;script&gt;
-document.write("Let's write some HTML right here!");
-&lt;/script&gt;</pre>
-    </li>
-    <li> Include as an event
-    <pre class='prettyprint'>&lt;a href='javascript:void(0);' onclick='alert("Hello World!");'&gt;</pre>
-    </li>
-  </ul>
-</article>
-
-
-
-<article class='slide slide-subhead'>
-  <h1>Again, we're not really teaching "programming" </h1>
-  <h2>There's <b>way</b> too much to try to cover in 1 class</h2>
-</article>
-
-<article class='slide slide-subhead'>
-  <h1 class='small'>We're really want to be able to use jQuery</h1>
-  <p>And need just enough Javascript to get by.</p>
-</article>
-
-
-<article class='slide slide-list'>
-<h2>3 Main Goals for today</h2>
-<ol>
-	<li class="slide">
-		<h3>Be able to read and understand some JavaScript</h3>
-	</li>
-	<li class="slide">
-		<h3>Be able to manipulate documents with jQuery</h3>
-	</li>
-	<li class="slide">
-		<h3>Be able to use jQuery plugins</h3>
-	</li>
-</ol>
-</article>
-
-<article class='slide slide-list'>
- <h2>What is jQuery?</h2>
- <ul>
- 	<li class="slide">
- 		<h3>Most of what we do in Javscript is manipulate the DOM and Ajax</h3>
- 	</li>
- 	<li class="slide">
- 		<h3>These are very long and cumbersome to do in straight javscript</h3>
- 	</li>
- 	<li class="slide">
-                <h3>On top of this, different browsers have different behavior</h3>
- 	</li>
- 	<li class="slide">
-                <h3>jQuery is a library that makes this easy and clean and <em>consistent</em></h3>
- 	</li>
- 	<li class="slide">
- 		<h3>Works with CSS selectors </h3>
- 	</li>
- </ul>
-</article>
-
-
-<article class='slide slide-list'>
-<h2>jQuery Basics</h2>
-<ul>
-	<li class="slide">
-		<h3>Everything is “namespaced” inside of the jQuery object, which is aliased with “$”</h3>
-	</li>
-	<li class="slide">
-		<h3>...which means everything you do in jQuery starts with a $</h3>
-	</li>
-	<li class="slide">
-		<h3>Uses CSS selectors for picking pieces of the DOM out.</h3>
-	</li>
-</ul>
+<article class='slide slide-accent'>
+<h2>Let's Make Some Compelling Images</h2>
 </article>
 
 
 <article class='slide slide-subhead'>
-<h1>Docs are your Friend</h1>
-<h2>Get comfortable with <a href='http://docs.jquery.com'>docs.jquery.com</a></h2>
+ <h1>You don't need expensive photoshoot or stock photography</h1>
+ <h2><a href="http://dribbble.com/shots/661417-iPhone-holding-hand-Free-PSD">This image is a freebie from dribbble</a></h2>
+ <h2>The rest I had on my phone or walked outside and took with my phone</h2>
 </article>
 
-<article class='slide slide-list'>
-<h2>Loading jQuery</h2>
-<h3>Include from a CDN or locally</h3>
-<pre class='prettyprint'>
-&lt;script src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'&gt;&lt;/script&gt;
-</pre>
-<h3>Or</h3>
-<pre class='prettyprint'>
-&lt;script src='js/jquery.min.js'&gt;&lt;/script&gt;
-</pre>
-<p>Need to make sure we have the file in the right location, can view in browser if there's a problem.</p>
+<article class='slide slide-accent'>
+<h2>Let's Get These Images in our Page</h2>
 </article>
 
 
-<article class='slide slide-list'>
-<h2>Using jQuery</h2>
-<p>Since we often include Javscript in the head of the document, we need to make sure we wait until the
-page is loaded before we use it. We can use the jQuery bind function to load stuff at the appropriate point.   </p>
-<pre class='prettyprint'>
-&lt;script&gt;
-$(document).bind("ready",function() {
-  // Dom Loaded
-});
-&lt;/script&gt;
-</pre>
+<article class='slide slide-subhead'>
+ <h1><a href="http://css-tricks.com/perfect-full-page-background-image/">Here's some basic CSS options for background images</a></h1>
+ <h2>We won't use this today - but it's good to keep around</h2>
+</article>
+
+<article class='slide slide-subhead'>
+ <h1><a href="http://jquery.malsup.com/cycle/">Remember Cycle from our first week?</a></h1>
+ <h2>We won't use this today - but it's good to keep around</h2>
+</article>
+
+<article class='slide slide-subhead'>
+ <h1><a href="http://srobbin.com/jquery-plugins/backstretch/">We'll use backstretch</a></h1>
+ <h2>It's a great combo of cover images + cycle</h2>
+</article>
+
+<article class='slide slide-accent'>
+<h2>Let's Add Some Text and a Font</h2>
+</article>
+
+<article class='slide slide-subhead'>
+ <h1>First You'll need a stylesheet</h1>
+ <h2><a href="http://marthar.github.com/startupExercises/2#slide-41">Remember this?</a></h2>
 </article>
 
 
- 
-<article class='slide slide-list'>
-<h2>Plugins: Barebones</h2>
-<p>Let's use the cycle plugin: <a href='http://jquery.malsup.com/cycle/'>http://jquery.malsup.com/cycle/</a> (images from <a href='http://lorempixel.com'>http://lorempixel.com</a>)</p>
-<textarea class='coder-editor' data-coder-template="coderdeck-full-page">
-<html>
-  <head>
-    <!-- We include jquery -->
-    <script src='js/jquery.min.js'></script>
-    <!-- We include the plugin -->
-    <script src='js/jquery.cycle.all.js'></script>
-  </head>
-  <body>
-    <div id='slideshow'>
-      <img src='images/image1.jpg'/>
-      <img src='images/image2.jpg'/>
-      <img src='images/image3.jpg'/>
-      <img src='images/image4.jpg'/>
-    </div>
-    <script>
-      $(document).ready(function() {
-        $('#slideshow').cycle();
-        });     
-    </script>
-  </body>
-</textarea>
+<article class='slide slide-subhead'>
+ <h1><a href="http://www.google.com/webfonts#UsePlace:use/Collection:Oswald">I used Google Fonts</a></h1>
+ <h2>Try adding a new google font to your page</h2>
 </article>
 
-<article class='slide slide-list'>
-<h2>Cycle: Style and Options</h2>
-<textarea class='coder-editor' data-coder-template="coderdeck-full-page">
-<html>
-  <head>
-    <!-- We include jquery -->
-    <script src='js/jquery.min.js'></script>
-    <!-- We include the plugin -->
-    <script src='js/jquery.cycle.all.js'></script>
-
-    <style>
-       /* #slideshow img { border:1px solid black; padding:10px; border-radius:10px; } */
-    </style>
-  </head>
-  <body>
-    <div id='slideshow'>
-      <img src='images/image1.jpg'/>
-      <img src='images/image2.jpg'/>
-      <img src='images/image3.jpg'/>
-      <img src='images/image4.jpg'/>
-    </div>
-    <script>
-      $(document).ready(function() {
-        $('#slideshow').cycle({
-          //next: "#slideshow",
-          //speed: 5000,
-          //timeout: 200,
-          //random: 1,
-          fx: 'fade' 
-          // transition types, ex: fade, scrollUp, shuffle, etc...
-        });
-      });     </script>
-  </body>
-</textarea>
+<article class='slide slide-subhead'>
+ <h1>Other Options</h1>
+ <h2><a href="http://www.fontsquirrel.com/">FontSquirrel</a></h2>
+ <h2><a href="https://typekit.com/fonts">TypeKit</a></h2>
+ <h2><a href="http://typecast.com/">Typecast is a great app to test out webfonts</a></h2>
 </article>
 
-<article class='slide slide-list'>
-<h2>Click Drop-Down</h2>
-<p>jQuery Accordian</p>
-	
-<textarea class='coder-editor coder-editor-full'>
-<!DOCTYPE html>
-<html>
-<head>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-  
-  <script>
-  $(document).ready(function() {
-    $("#accordion").accordion();
-	$( ".selector" ).accordion({ collapsible: true });
-  });
-  </script>
-</head>
-<body>
-	<div id="accordion">
-		<h3><a href="#">Section 1</a></h3>
-		  <div>
-		    <ul>
-		      <li>List item one</li>
-		      <li>List item two</li>
-		      <li>List item three</li>
-		    </ul>
-		  </div>
-
-		<h3><a href="#">Section 2</a></h3>
-		  <div>
-		  	<p>
-		  	Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-		  	purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-		  	velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-		  	suscipit faucibus urna.
-		  	</p>
-		  </div>
-
-		<h3><a href="#">Section 3</a></h3>
-		  <div>
-		    <ul>
-		      <li>List item one</li>
-		      <li>List item two</li>
-		      <li>List item three</li>
-		    </ul>
-		  </div>
-
-		<h3><a href="#">Section 4</a></h3>
-		  <div>
-		    <ul>
-		      <li>List item one</li>
-		      <li>List item two</li>
-		      <li>List item three</li>
-		    </ul>
-		  </div>
-	</div>
-
-	</body>
-	</html>
-	<style>
-
-	  body { width:300px; marging: 0 auto; color:gray; font-family:Georgia, serif;}
-
-	  p { padding-top:7px;}
-
-	  h3 { 
-	    margin-top:30px;
-	    background-color:#dddddd;
-	    padding:3px;
-	    line-height:1.2em;
-	}
-	  h3 a { 
-	    text-decoration:none;
-	    color:gray;
-	    font-weight:bold
-	  }
-
-	</style>
-</body>
-</head>
-</html>
-
-</textarea>
+<article class='slide slide-accent'>
+<h2>Let's Add a Form</h2>
 </article>
 
-<article class='slide slide-statement'>
-<h1><a href="http://fancybox.net/">jQuery LightBox</a></h1>
+<article class='slide slide-subhead'>
+ <h1>We only need to add the right code and style it - our programmers take care of the rest</h1>
+ <h2><a href="http://line25.com/tutorials/create-a-stylish-contact-form-with-html5-css3">Here's a great tutorial - Chris Spooner has lots of others</a></h2>
 </article>
 
 
-<article class='slide slide-statement'>
-<h1><a href="http://nivo.dev7studios.com/">Nivo Slider</a></h1>
+
+<article class='slide slide-accent'>
+<h2>Let's Style our Button</h2>
+</article>
+
+<article class='slide slide-subhead'>
+	 <h1><a href="http://cssdeck.com/labs/push-the-buttons">I used CSSDeck Push Buttons</a></h1>
 </article>
 
 
 <article class='slide slide-accent'>
-	<h1><a href="http://twitter.github.com/bootstrap/index.html">BootStrap It Baby!</a></h1>
+<h2>Viola! You have a Super Landing Page!</h2>
 </article>
-
 
 <!-- Update these paths to point to the correct files. -->
 <script src="src/jquery.tmpl.min.js"></script>
